@@ -1238,26 +1238,28 @@ Navigation.ResizeHandler = function () {
      *
      * @return {void}
      */
-    this.treeResize = function () {
-        var $nav = $('#pma_navigation');
-        var $navTree = $('#pma_navigation_tree');
-        var $navHeader = $('#pma_navigation_header');
-        var $navTreeContent = $('#pma_navigation_tree_content');
-        var height = ($nav.height() - $navHeader.height());
+    $(document).ready(function(){
+        this.treeResize = function () {
+            var $nav = $('#pma_navigation');
+            var $navTree = $('#pma_navigation_tree');
+            var $navHeader = $('#pma_navigation_header');
+            var $navTreeContent = $('#pma_navigation_tree_content');
+            var height = ($nav.height() - $navHeader.height());
 
-        height = height > 50 ? height : 800; // keep min. height
-        $navTree.height(height);
-        if ($navTreeContent.length > 0) {
-            $navTreeContent.height(height - $navTreeContent.position().top);
-        } else {
-            // TODO: in fast filter search response there is no #pma_navigation_tree_content, needs to be added in php
-            $navTree.css({
-                'overflow-y': 'auto'
-            });
-        }
-        // Set content bottom space because of console
-        $('body').css('margin-bottom', $('#pma_console').height() + 'px');
-    };
+            height = height > 50 ? height : 800; // keep min. height
+            $navTree.height(height);
+            if ($navTreeContent.length > 0) {
+                $navTreeContent.height(height - $navTreeContent.position().top);
+            } else {
+                // TODO: in fast filter search response there is no #pma_navigation_tree_content, needs to be added in php
+                $navTree.css({
+                                 'overflow-y': 'auto'
+                             });
+            }
+            // Set content bottom space because of console
+            $('body').css('margin-bottom', $('#pma_console').height() + 'px');
+        };
+    });
     /**
      * Init handlers for the tree resizers
      *
