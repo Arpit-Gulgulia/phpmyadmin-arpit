@@ -1238,8 +1238,8 @@ Navigation.ResizeHandler = function () {
      *
      * @return {void}
      */
-    $(document).ready(function(){
-        this.treeResize = function () {
+    this.treeResize = function () {
+        $(document).ready(function(){
             var $nav = $('#pma_navigation');
             var $navTree = $('#pma_navigation_tree');
             var $navHeader = $('#pma_navigation_header');
@@ -1258,8 +1258,8 @@ Navigation.ResizeHandler = function () {
             }
             // Set content bottom space because of console
             $('body').css('margin-bottom', $('#pma_console').height() + 'px');
-        };
-    });
+        });
+    };
     /**
      * Init handlers for the tree resizers
      *
