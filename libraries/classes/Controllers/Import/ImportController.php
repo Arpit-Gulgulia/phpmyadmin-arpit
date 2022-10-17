@@ -618,6 +618,7 @@ final class ImportController extends AbstractController
             $GLOBALS['message'] = Message::notice(__('Showing bookmark'));
         } elseif ($GLOBALS['finished'] && ! $GLOBALS['error']) {
             // Do not display the query with message, we do it separately
+            echo "Jai Jinnedra!!";
             $GLOBALS['display_query'] = ';';
             if ($GLOBALS['import_type'] !== 'query') {
                 $GLOBALS['message'] = Message::success(
