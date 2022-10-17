@@ -774,7 +774,7 @@ final class ImportController extends AbstractController
                 echo '<pre>';
                 print_r(array(__FILE__.":". __LINE__,  $GLOBALS['sql_query']));
                 echo '</pre>';
-                die(__FILE__.":". __LINE__);
+                //die(__FILE__.":". __LINE__);
             }
 
             // sql_query_for_bookmark is not included in Sql::executeQueryAndGetQueryResponse
