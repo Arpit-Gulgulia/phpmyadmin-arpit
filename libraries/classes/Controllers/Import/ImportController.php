@@ -324,6 +324,9 @@ final class ImportController extends AbstractController
 
         $GLOBALS['result'] = false;
 
+        echo '<pre>';
+        print_r([ __FILE__ . ":" . __LINE__, $_POST]);
+        echo '</pre>';
         // Bookmark Support: get a query back from bookmark if required
         if (! empty($_POST['id_bookmark'])) {
             $id_bookmark = (int) $_POST['id_bookmark'];
@@ -690,18 +693,10 @@ final class ImportController extends AbstractController
         //  can choke on it so avoid parsing)
         $sqlLength = mb_strlen($GLOBALS['sql_query']);
         if ($sqlLength <= $GLOBALS['cfg']['MaxCharactersInDisplayedSQL']) {
-            echo '<pre>';
-            print_r(array(__FILE__.":". __LINE__,  $GLOBALS['sql_query']));
-            echo '</pre>';
-
             [$statementInfo, $GLOBALS['db'], $table_from_sql] = ParseAnalyze::sqlQuery(
                 $GLOBALS['sql_query'],
                 $GLOBALS['db']
             );
-            echo '<pre>';
-            print_r(array(__FILE__.":". __LINE__,  $GLOBALS['sql_query']));
-            echo '</pre>';
-            die(__FILE__.":". __LINE__);
 
             $GLOBALS['reload'] = $statementInfo->reload;
             $GLOBALS['offset'] = $statementInfo->offset;
