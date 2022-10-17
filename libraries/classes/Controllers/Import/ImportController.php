@@ -325,8 +325,12 @@ final class ImportController extends AbstractController
         $GLOBALS['result'] = false;
 
         echo '<pre>';
-        print_r([ __FILE__ . ":" . __LINE__, $_POST]);
+        print_r([ __FILE__ . ":" . __LINE__, $GLOBALS['sql_query']]);
         echo '</pre>';
+        echo '<pre>';
+        print_r(array(__FILE__.":". __LINE__,  $_POST));
+        echo '</pre>';
+        die(__FILE__.":". __LINE__);
         // Bookmark Support: get a query back from bookmark if required
         if (! empty($_POST['id_bookmark'])) {
             $id_bookmark = (int) $_POST['id_bookmark'];
