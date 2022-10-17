@@ -166,10 +166,6 @@ final class ImportController extends AbstractController
             $GLOBALS['import_type'] = 'query';
             $GLOBALS['format'] = 'sql';
             $_SESSION['sql_from_query_box'] = true;
-            echo '<pre>';
-            print_r(array(__FILE__.":". __LINE__,  $GLOBALS['sql_query']));
-            echo '</pre>';
-            die(__FILE__.":". __LINE__);
 
             // If there is a request to ROLLBACK when finished.
             if (isset($_POST['rollback_query'])) {
@@ -688,6 +684,10 @@ final class ImportController extends AbstractController
             $_SESSION['Import_message']['message'] = $GLOBALS['message']->getDisplay();
         }
 
+        echo '<pre>';
+        print_r(array(__FILE__.":". __LINE__,  $GLOBALS['sql_query']));
+        echo '</pre>';
+        die(__FILE__.":". __LINE__);
         // Parse and analyze the query, for correct db and table name
         // in case of a query typed in the query window
         // (but if the query is too large, in case of an imported file, the parser
