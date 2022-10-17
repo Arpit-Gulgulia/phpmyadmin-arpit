@@ -618,7 +618,10 @@ final class ImportController extends AbstractController
             $GLOBALS['message'] = Message::notice(__('Showing bookmark'));
         } elseif ($GLOBALS['finished'] && ! $GLOBALS['error']) {
             // Do not display the query with message, we do it separately
-            echo "Jai Jinnedra!!";
+            echo '<pre>';
+            print_r(array(__FILE__.":". __LINE__,  $GLOBALS['sql_query']));
+            echo '</pre>';
+            die(__FILE__.":". __LINE__);
             $GLOBALS['display_query'] = ';';
             if ($GLOBALS['import_type'] !== 'query') {
                 $GLOBALS['message'] = Message::success(
@@ -685,10 +688,6 @@ final class ImportController extends AbstractController
             $_SESSION['Import_message']['message'] = $GLOBALS['message']->getDisplay();
         }
 
-        echo '<pre>';
-        print_r(array(__FILE__.":". __LINE__,  $GLOBALS['sql_query']));
-        echo '</pre>';
-        die(__FILE__.":". __LINE__);
         // Parse and analyze the query, for correct db and table name
         // in case of a query typed in the query window
         // (but if the query is too large, in case of an imported file, the parser
