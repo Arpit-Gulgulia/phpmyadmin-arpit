@@ -752,7 +752,7 @@ final class ImportController extends AbstractController
                 }
 
                 echo '<pre>';
-                print_r(array(__FILE__.":". __LINE__,  $GLOBALS));
+                print_r(array(__FILE__.":". __LINE__,  $GLOBALS['go_sql']));
                 echo '</pre>';
 
                 $html_output .= $this->sql->executeQueryAndGetQueryResponse(
