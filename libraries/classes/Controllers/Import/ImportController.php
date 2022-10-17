@@ -324,13 +324,6 @@ final class ImportController extends AbstractController
 
         $GLOBALS['result'] = false;
 
-        echo '<pre>';
-        print_r([ __FILE__ . ":" . __LINE__, $GLOBALS['sql_query']]);
-        echo '</pre>';
-        echo '<pre>';
-        print_r(array(__FILE__.":". __LINE__,  $_POST));
-        echo '</pre>';
-        die(__FILE__.":". __LINE__);
         // Bookmark Support: get a query back from bookmark if required
         if (! empty($_POST['id_bookmark'])) {
             $id_bookmark = (int) $_POST['id_bookmark'];
@@ -474,7 +467,7 @@ final class ImportController extends AbstractController
             $GLOBALS['import_file'] = Util::userDir((string) $GLOBALS['cfg']['UploadDir'])
                 . $GLOBALS['local_import_file'];
 
-            /**
+            /*
              * Do not allow symlinks to avoid security issues
              * (user can create symlink to file they can not access,
              * but phpMyAdmin can).
@@ -758,6 +751,10 @@ final class ImportController extends AbstractController
                     $GLOBALS['table'] = $table_from_sql;
                 }
 
+                echo '<pre>';
+                print_r(array(__FILE__.":". __LINE__,  $GLOBALS['sql_query']));
+                echo '</pre>';
+
                 $html_output .= $this->sql->executeQueryAndGetQueryResponse(
                     $statementInfo,
                     false, // is_gotofile
@@ -774,6 +771,10 @@ final class ImportController extends AbstractController
                     $GLOBALS['sql_query'], // sql_query
                     null // complete_query
                 );
+                echo '<pre>';
+                print_r(array(__FILE__.":". __LINE__,  $GLOBALS['sql_query']));
+                echo '</pre>';
+                die(__FILE__.":". __LINE__);
             }
 
             // sql_query_for_bookmark is not included in Sql::executeQueryAndGetQueryResponse
