@@ -618,10 +618,6 @@ final class ImportController extends AbstractController
             $GLOBALS['message'] = Message::notice(__('Showing bookmark'));
         } elseif ($GLOBALS['finished'] && ! $GLOBALS['error']) {
             // Do not display the query with message, we do it separately
-            echo '<pre>';
-            print_r(array(__FILE__.":". __LINE__,  $GLOBALS['sql_query']));
-            echo '</pre>';
-            die(__FILE__.":". __LINE__);
             $GLOBALS['display_query'] = ';';
             if ($GLOBALS['import_type'] !== 'query') {
                 $GLOBALS['message'] = Message::success(
@@ -694,10 +690,18 @@ final class ImportController extends AbstractController
         //  can choke on it so avoid parsing)
         $sqlLength = mb_strlen($GLOBALS['sql_query']);
         if ($sqlLength <= $GLOBALS['cfg']['MaxCharactersInDisplayedSQL']) {
+            echo '<pre>';
+            print_r(array(__FILE__.":". __LINE__,  $GLOBALS['sql_query']));
+            echo '</pre>';
+
             [$statementInfo, $GLOBALS['db'], $table_from_sql] = ParseAnalyze::sqlQuery(
                 $GLOBALS['sql_query'],
                 $GLOBALS['db']
             );
+            echo '<pre>';
+            print_r(array(__FILE__.":". __LINE__,  $GLOBALS['sql_query']));
+            echo '</pre>';
+            die(__FILE__.":". __LINE__);
 
             $GLOBALS['reload'] = $statementInfo->reload;
             $GLOBALS['offset'] = $statementInfo->offset;
