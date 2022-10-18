@@ -2880,3 +2880,12 @@ body .ui-dialog {
   z-index: 1056;
   top: 100px;
 }
+
+.centralColBg.table > :not(caption) > * > * {
+  background: transparent;
+}
+
+.centralColBg input[type="submit"]:hover {
+  background-image: linear-gradient(#fff, #ddd);
+  color: var(--bs-btn-hover-color);
+}
